@@ -1,0 +1,44 @@
+.box{
+    width: 90%;
+    height: 350px;
+    font-size: 80px;
+    border-style: solid;
+    text-align: center;
+    margin: auto;
+    padding: 100px 0;
+  }
+.head{
+    font-size: 70px;
+}
+#myProgress {
+    margin: 20px auto 0;
+    width: 90%;
+    text-align: center;
+    background-color: #ddd;
+  }
+  
+  #myBar {
+    width: 0%;
+    height: 30px;
+    background-color: rgb(233, 13, 13);
+    text-align: center;
+    line-height: 30px;
+    color: white;
+  }
+.bodyg{
+    background: #000000
+}
+.box1{
+    width: 90%;
+    height: 350px;
+    font-size: 80px;
+    border-style: solid,#fff;
+    text-align: center;
+    margin: auto;
+    color: #fff;
+    padding: 100px 0;
+  }
+.head1{
+    font-size: 70px;
+    color: #fff;
+}

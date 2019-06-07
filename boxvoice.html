@@ -1,0 +1,2258 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/boxvoice.css">
+<link rel="stylesheet" type="text/css" href="css/keyborad.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<title>กล่องข้อความเสียง</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="https://rawgithub.com/hiddentao/google-tts/master/google-tts.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="js/del.js"></script>
+<script src="js/whiledata.js"></script>
+<script src="js/settextAdd.js"></script>
+<script src="js/settextEdit.js"></script>
+
+<body id="body" >
+
+<div class="w3-main w3-content w3-padding w3-center" style="max-width:1200px;margin-top:20px;text-align: center" >
+    
+    <button  id="back1" class="btn  btn-lg btn-warning pull-left"><i class="fa fa-reply">  กลับ</i></button> 
+    <button  id="add"  class="btn  btn-lg btn-danger pull-right"><i class="fa fa-plus-circle">  เพิ่ม</i></button>
+    <div class="head" id="head"> กล่องข้อความเสียง</div>
+    <div id="myProgress" style="display: none;	">
+        <div id="myBar">0%</div>
+    </div>
+   
+    <div class="w3-row-padding w3-padding-32 w3-container" id='container'>
+      
+     </div>
+
+
+</div>
+
+
+ <!-- Modal Add -->
+ <div class="modal fade" id="myModal" role="dialog">
+   <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title"><i class="fa fa-plus-circle"></i>เพิ่มข้อมูล</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close" >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+       <div class="modal-body">
+        <div id="exampleWrapperAdd">
+            <form id="myForm" method="POST" action="?process-form">
+    
+                <div class="input-group">
+                    <textarea class="form-control custom-control" cols="70" rows="2" style="resize:none" id="textareaReadAdd"></textarea>
+                    <span class="input-group-addon btn btn-primary" id="btnsave"  >
+                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                    </span>
+    
+                </div>
+            </form>
+        </div>
+    
+        <div id="keyboardAdd" >
+            <ul class="cf" id="numnertop">
+    
+                <li rel="1" rel="1">
+                    <a href="#" class="key c49">
+                        <span>1</span>
+                    </a>
+                </li>
+                <li rel="2">
+                    <a href="#" class="key c50">
+                        <span>2</span>
+                    </a>
+                </li>
+                <li rel="3">
+                    <a href="#" class="key c51">
+                        <span>3</span>
+                    </a>
+                </li>
+                <li rel="4">
+                    <a href="#" class="key c52">
+                        <span>4</span>
+                    </a>
+                </li>
+                <li rel="5">
+                    <a href="#" class="key c53">
+                        <span>5</span>
+                    </a>
+                </li>
+                <li rel="6">
+                    <a href="#" class="key c54">
+                        <span>6</span>
+                    </a>
+                </li>
+                <li rel="7">
+                    <a href="#" class="key c55">
+                        <span>7</span>
+                    </a>
+                </li>
+                <li rel="8">
+                    <a href="#" class="key c56">
+                        <span>8</span>
+                    </a>
+                </li>
+                <li rel="9">
+                    <a href="#" class="key c57">
+                        <span>9</span>
+                    </a>
+                </li>
+                <li rel="0">
+                    <a href="#" class="key c48">
+                        <span>0</span>
+                    </a>
+                </li>
+                <li rel="+">
+                    <a href="#" class="key c189 ">
+                        <span>+</span>
+                    </a>
+                </li>
+                <li rel="-">
+                    <a href="#" class="key c187">
+                        <span>-</span>
+                    </a>
+                </li>
+                <li rel="*">
+                    <a href="#" class="key c192">
+                        <span>*</span>
+                    </a>
+                </li>
+                <li rel="clear">
+                    <a href="#" class="key c46" id="delete">
+                        <span>CLR</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="cf" id="numbers">
+                <li rel="_">
+                    <a href="#" class="key c192">
+                        <span>_</span>
+                    </a>
+                </li>
+                <li rel="ๅ">
+                    <a href="#" class="key c49">
+                        <span>ๅ</span>
+                    </a>
+                </li>
+                <li rel="/">
+                    <a href="#" class="key c50">
+                        <span>/</span>
+                    </a>
+                </li>
+                <li rel="-">
+                    <a href="#" class="key c51">
+                        <span>-</span>
+                    </a>
+                </li>
+                <li rel="ภ">
+                    <a href="#" class="key c52">
+                        <span>ภ</span>
+                    </a>
+                </li>
+                <li rel="ถ">
+                    <a href="#" class="key c53">
+                        <span>ถ</span>
+                    </a>
+                </li>
+                <li rel="ุ">
+                    <a href="#" class="key c54">
+                        <span>ุ</span>
+                    </a>
+                </li>
+                <li rel="ึ">
+                    <a href="#" class="key c55">
+                        <span>ึ</span>
+                    </a>
+                </li>
+                <li rel="ค">
+                    <a href="#" class="key c56">
+                        <span>ค</span>
+                    </a>
+                </li>
+                <li rel="ต">
+                    <a href="#" class="key c57">
+                        <span>ต</span>
+                    </a>
+                </li>
+                <li rel="จ">
+                    <a href="#" class="key c48">
+                        <span>จ</span>
+                    </a>
+                </li>
+                <li rel="ข">
+                    <a href="#" class="key c189 ">
+                        <span>ข</span>
+                    </a>
+                </li>
+                <li rel="ช">
+                    <a href="#" class="key c187">
+                        <span>ช</span>
+                    </a>
+                </li>
+                <li rel="delete">
+                    <a href="#" class="key c46" id="delete">
+                        <span>Delete</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="cf" id="qwerty">
+                <li rel="tab">
+                    <a href="#" class="key c9" id="tab">
+                        <span>tab</span>
+                    </a>
+                </li>
+                <li rel="ๆ">
+                    <a href="#" class="key c81">
+                        <span>ๆ</span>
+                    </a>
+                </li>
+                <li rel="ไ">
+                    <a href="#" class="key c87">
+                        <span>ไ</span>
+                    </a>
+                </li>
+                <li rel="ำ">
+                    <a href="#" class="key c69">
+                        <span>ำ</span>
+                    </a>
+                </li>
+                <li rel="พ">
+                    <a href="#" class="key c82">
+                        <span>พ</span>
+                    </a>
+                </li>
+                <li rel="ะ">
+                    <a href="#" class="key c84">
+                        <span>ะ</span>
+                    </a>
+                </li>
+                <li rel="ั">
+                    <a href="#" class="key c89">
+                        <span>ั</span>
+                    </a>
+                </li>
+                <li rel="ี">
+                    <a href="#" class="key c85">
+                        <span>ี</span>
+                    </a>
+                </li>
+                <li rel="ร">
+                    <a href="#" class="key c73">
+                        <span>ร</span>
+                    </a>
+                </li>
+                <li rel="น">
+                    <a href="#" class="key c79">
+                        <span>น</span>
+                    </a>
+                </li>
+                <li rel="ย">
+                    <a href="#" class="key c80">
+                        <span>ย</span>
+                    </a>
+                </li>
+                <li rel="บ">
+                    <a href="#" class="key c219 ">
+                        <span>บ</span>
+                    </a>
+                </li>
+                <li rel="ล">
+                    <a href="#" class="key c221 ">
+                        <span>ล</span>
+                    </a>
+                </li>
+                <li rel="ฃ">
+                    <a href="#" class="key c220 ">
+                        <span>ฃ</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="cf" id="asdfg">
+                <li rel="cap">
+                    <a href="#" class="key c20 alt" id="caps">
+                        <b></b>
+                        <span>caps </span>
+                    </a>
+                </li>
+                <li rel="ฟ">
+                    <a href="#" class="key c65">
+                        <span>ฟ</span>
+                    </a>
+                </li>
+                <li rel="ห">
+                    <a href="#" class="key c83">
+                        <span>ห</span>
+                    </a>
+                </li>
+                <li rel="ก">
+                    <a href="#" class="key c68">
+                        <span>ก</span>
+                    </a>
+                </li>
+                <li rel="ด">
+                    <a href="#" class="key c70">
+                        <span>ด</span>
+                    </a>
+                </li>
+                <li rel="เ">
+                    <a href="#" class="key c71">
+                        <span>เ</span>
+                    </a>
+                </li>
+                <li rel="้">
+                    <a href="#" class="key c72">
+                        <span>้</span>
+                    </a>
+                </li>
+                <li rel="่">
+                    <a href="#" class="key c74">
+                        <span>่</span>
+                    </a>
+                </li>
+                <li rel="า">
+                    <a href="#" class="key c75">
+                        <span>า</span>
+                    </a>
+                </li>
+                <li rel="ส">
+                    <a href="#" class="key c76">
+                        <span>ส</span>
+                    </a>
+                </li>
+                <li rel="ว">
+                    <a href="#" class="key c186 ">
+                        <span>ว</span>
+                    </a>
+                </li>
+                <li rel="ง">
+                    <a href="#" class="key c222 ">
+                        <span>ง</span>
+                    </a>
+                </li>
+                <li rel="enter">
+                    <a href="#" class="key c13 alt" id="enter">
+                        <span>Enter</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="cf" id="zxcvb">
+                <li rel="shift">
+                    <a href="#" class="key c16 shiftleft">
+                        <span>Shift</span>
+                    </a>
+                </li>
+                <li rel="ผ">
+                    <a href="#" class="key c90">
+                        <span>ผ</span>
+                    </a>
+                </li>
+                <li rel="ป">
+                    <a href="#" class="key c88">
+                        <span>ป</span>
+                    </a>
+                </li>
+                <li rel="แ">
+                    <a href="#" class="key c67">
+                        <span>แ</span>
+                    </a>
+                </li>
+                <li rel="อ">
+                    <a href="#" class="key c86">
+                        <span>อ</span>
+                    </a>
+                </li>
+                <li rel="ิ">
+                    <a href="#" class="key c66">
+                        <span>ิ</span>
+                    </a>
+                </li>
+                <li rel="ื">
+                    <a href="#" class="key c78">
+                        <span>ื</span>
+                    </a>
+                </li>
+                <li rel="ท">
+                    <a href="#" class="key c77">
+                        <span>ท</span>
+                    </a>
+                </li>
+                <li rel="ม">
+                    <a href="#" class="key c188 ">
+                        <span>ม</span>
+                    </a>
+                </li>
+                <li rel="ใ">
+                    <a href="#" class="key c190 ">
+                        <span>ใ</span>
+                    </a>
+                </li>
+                <li rel="ฝ">
+                    <a href="#" class="key c191 ">
+                        <span>ฝ</span>
+                    </a>
+                </li>
+                <li rel="shift">
+                    <a href="#" class="key c16 shiftright">
+                        <span>Shift</span>
+                    </a>
+                </li>
+            </ul>
+    
+        </div>
+    
+        <div id="keyboardShiftAdd" style="display: none;	">
+            <ul class="cf" id="numnertop">
+    
+                <li rel="1">
+                    <a href="#" class="key c49">
+                        <span>1</span>
+                    </a>
+                </li>
+                <li rel="2">
+                    <a href="#" class="key c50">
+                        <span>2</span>
+                    </a>
+                </li>
+                <li rel="3">
+                    <a href="#" class="key c51">
+                        <span>3</span>
+                    </a>
+                </li>
+                <li rel="4">
+                    <a href="#" class="key c52">
+                        <span>4</span>
+                    </a>
+                </li>
+                <li rel="5">
+                    <a href="#" class="key c53">
+                        <span>5</span>
+                    </a>
+                </li>
+                <li rel="6">
+                    <a href="#" class="key c54">
+                        <span>6</span>
+                    </a>
+                </li>
+                <li rel="7">
+                    <a href="#" class="key c55">
+                        <span>7</span>
+                    </a>
+                </li>
+                <li rel="8">
+                    <a href="#" class="key c56">
+                        <span>8</span>
+                    </a>
+                </li>
+                <li rel="9">
+                    <a href="#" class="key c57">
+                        <span>9</span>
+                    </a>
+                </li>
+                <li rel="0">
+                    <a href="#" class="key c48">
+                        <span>0</span>
+                    </a>
+                </li>
+                <li rel="=">
+                    <a href="#" class="key c189 ">
+                        <span>=</span>
+                    </a>
+                </li>
+                <li rel="(">
+                    <a href="#" class="key c187">
+                        <span>(</span>
+                    </a>
+                </li>
+                <li rel=")">
+                    <a href="#" class="key c192">
+                        <span>)</span>
+                    </a>
+                </li>
+                <li rel="clear">
+                    <a href="#" class="key c46" id="delete">
+                        <span>CLR</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="cf" id="numbers">
+                <li rel="%">
+                    <a href="#" class="key c192">
+                        <span>%</span>
+                    </a>
+                </li>
+                <li rel="+">
+                    <a href="#" class="key c49">
+                        <span>+</span>
+                    </a>
+                </li>
+                <li rel="๑">
+                    <a href="#" class="key c50">
+                        <span>๑</span>
+                    </a>
+                </li>
+                <li rel="๒">
+                    <a href="#" class="key c51">
+                        <span>๒</span>
+                    </a>
+                </li>
+                <li rel="๓">
+                    <a href="#" class="key c52">
+                        <span>๓</span>
+                    </a>
+                </li>
+                <li rel="๔">
+                    <a href="#" class="key c53">
+                        <span>๔</span>
+                    </a>
+                </li>
+                <li rel="ู">
+                    <a href="#" class="key c54">
+                        <span>ู</span>
+                    </a>
+                </li>
+                <li rel="฿">
+                    <a href="#" class="key c55">
+                        <span>฿</span>
+                    </a>
+                </li>
+                <li rel="๕">
+                    <a href="#" class="key c56">
+                        <span>๕</span>
+                    </a>
+                </li>
+                <li rel="๖">
+                    <a href="#" class="key c57">
+                        <span>๖</span>
+                    </a>
+                </li>
+                <li rel="๗">
+                    <a href="#" class="key c48">
+                        <span>๗</span>
+                    </a>
+                </li>
+                <li rel="๘">
+                    <a href="#" class="key c189 ">
+                        <span>๘</span>
+                    </a>
+                </li>
+                <li rel="๙">
+                    <a href="#" class="key c187">
+                        <span>๙</span>
+                    </a>
+                </li>
+                <li rel="delete">
+                    <a href="#" class="key c46" id="delete">
+                        <span>Delete</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="cf" id="qwerty">
+                <li rel="tab">
+                    <a href="#" class="key c9" id="tab">
+                        <span>tab</span>
+                    </a>
+                </li>
+                <li rel="1">
+                    <a href="๐" class="key c81">
+                        <span>๐</span>
+                    </a>
+                </li>
+                <li rel="">
+                    <a href="#" class="key c87">
+                        <span>"</span>
+                    </a>
+                </li>
+                <li rel="ฎ">
+                    <a href="#" class="key c69">
+                        <span>ฎ</span>
+                    </a>
+                </li>
+                <li rel="ฑ">
+                    <a href="#" class="key c82">
+                        <span>ฑ</span>
+                    </a>
+                </li>
+                <li rel="ธ">
+                    <a href="#" class="key c84">
+                        <span>ธ</span>
+                    </a>
+                </li>
+                <li rel="ํ">
+                    <a href="#" class="key c89">
+                        <span>ํ</span>
+                    </a>
+                </li>
+                <li rel="๊">
+                    <a href="#" class="key c85">
+                        <span>๊</span>
+                    </a>
+                </li>
+                <li rel="ณ">
+                    <a href="#" class="key c73">
+                        <span>ณ</span>
+                    </a>
+                </li>
+                <li rel="ฯ">
+                    <a href="#" class="key c79">
+                        <span>ฯ</span>
+                    </a>
+                </li>
+                <li rel="ญ">
+                    <a href="#" class="key c80">
+                        <span>ญ</span>
+                    </a>
+                </li>
+                <li rel="ฐ">
+                    <a href="#" class="key c219 ">
+                        <span>ฐ</span>
+                    </a>
+                </li>
+                <li rel=",">
+                    <a href="#" class="key c221 ">
+                        <span>,</span>
+                    </a>
+                </li>
+                <li rel="ฅ">
+                    <a href="#" class="key c220 ">
+                        <span>ฅ</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="cf" id="asdfg">
+                <li rel="capshift">
+                    <a href="#" class="key c20 alt" id="caps">
+                        <b></b>
+                        <span>caps </span>
+                    </a>
+                </li>
+                <li rel="ฤ">
+                    <a href="#" class="key c65">
+                        <span>ฤ</span>
+                    </a>
+                </li>
+                <li rel="ฆ">
+                    <a href="#" class="key c83">
+                        <span>ฆ</span>
+                    </a>
+                </li>
+                <li rel="ฏ">
+                    <a href="#" class="key c68">
+                        <span>ฏ</span>
+                    </a>
+                </li>
+                <li rel="โ">
+                    <a href="#" class="key c70">
+                        <span>โ</span>
+                    </a>
+                </li>
+                <li rel="ฌ">
+                    <a href="#" class="key c71">
+                        <span>ฌ</span>
+                    </a>
+                </li>
+                <li rel="็">
+                    <a href="#" class="key c72">
+                        <span>็</span>
+                    </a>
+                </li>
+                <li rel="๋">
+                    <a href="#" class="key c74">
+                        <span>๋</span>
+                    </a>
+                </li>
+                <li rel="ษ">
+                    <a href="#" class="key c75">
+                        <span>ษ</span>
+                    </a>
+                </li>
+                <li rel="ศ">
+                    <a href="#" class="key c76">
+                        <span>ศ</span>
+                    </a>
+                </li>
+                <li rel="ซ">
+                    <a href="#" class="key c186 ">
+                        <span>ซ</span>
+                    </a>
+                </li>
+                <li rel=".">
+                    <a href="#" class="key c222 ">
+                        <span>.</span>
+                    </a>
+                </li>
+                <li rel="enter">
+                    <a href="#" class="key c13 alt" id="enter">
+                        <span>Enter</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="cf" id="zxcvb">
+                <li rel="shiftshift">
+                    <a href="#" class="keyshift  shiftleft">
+                        <span>Shift</span>
+                    </a>
+                </li>
+                <li rel="(">
+                    <a href="#" class="key c90">
+                        <span>(</span>
+                    </a>
+                </li>
+                <li rel=")">
+                    <a href="#" class="key c88">
+                        <span>)</span>
+                    </a>
+                </li>
+                <li rel="ฉ">
+                    <a href="#" class="key c67">
+                        <span>ฉ</span>
+                    </a>
+                </li>
+                <li rel="ฮ">
+                    <a href="#" class="key c86">
+                        <span>ฮ</span>
+                    </a>
+                </li>
+                <li rel="ฺ">
+                    <a href="#" class="key c66">
+                        <span>ฺ</span>
+                    </a>
+                </li>
+                <li rel="์">
+                    <a href="#" class="key c78">
+                        <span>์</span>
+                    </a>
+                </li>
+                <li rel="?">
+                    <a href="#" class="key c77">
+                        <span>?</span>
+                    </a>
+                </li>
+                <li rel="ฒ">
+                    <a href="#" class="key c188 ">
+                        <span>ฒ</span>
+                    </a>
+                </li>
+                <li rel="ฬ">
+                    <a href="#" class="key c190 ">
+                        <span>ฬ</span>
+                    </a>
+                </li>
+                <li rel="ฦ">
+                    <a href="#" class="key c191 ">
+                        <span>ฦ</span>
+                    </a>
+                </li>
+                <li rel="shiftshift">
+                    <a href="#" class="keyshift c16 shiftright">
+                        <span>Shift</span>
+                    </a>
+                </li>
+            </ul>
+    
+        </div>
+        <div id="keyboardCapAdd" style="display: none;	">
+            <ul class="cf" id="numnertop">
+    
+                <li rel="1">
+                    <a href="#" class="key c49">
+                        <span>1</span>
+                    </a>
+                </li>
+                <li rel="2">
+                    <a href="#" class="key c50">
+                        <span>2</span>
+                    </a>
+                </li>
+                <li rel="3">
+                    <a href="#" class="key c51">
+                        <span>3</span>
+                    </a>
+                </li>
+                <li rel="4">
+                    <a href="#" class="key c52">
+                        <span>4</span>
+                    </a>
+                </li>
+                <li rel="5">
+                    <a href="#" class="key c53">
+                        <span>5</span>
+                    </a>
+                </li>
+                <li rel="6">
+                    <a href="#" class="key c54">
+                        <span>6</span>
+                    </a>
+                </li>
+                <li rel="7">
+                    <a href="#" class="key c55">
+                        <span>7</span>
+                    </a>
+                </li>
+                <li rel="8">
+                    <a href="#" class="key c56">
+                        <span>8</span>
+                    </a>
+                </li>
+                <li rel="9">
+                    <a href="#" class="key c57">
+                        <span>9</span>
+                    </a>
+                </li>
+                <li rel="0">
+                    <a href="#" class="key c48">
+                        <span>0</span>
+                    </a>
+                </li>
+                <li rel="=">
+                    <a href="#" class="key c189 ">
+                        <span>=</span>
+                    </a>
+                </li>
+                <li rel="(">
+                    <a href="#" class="key c187">
+                        <span>(</span>
+                    </a>
+                </li>
+                <li rel=")">
+                    <a href="#" class="key c192">
+                        <span>)</span>
+                    </a>
+                </li>
+                <li rel="clear">
+                    <a href="#" class="key c46" id="delete">
+                        <span>CLR</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="cf" id="numbers">
+                <li rel="%">
+                    <a href="#" class="key c192">
+                        <span>%</span>
+                    </a>
+                </li>
+                <li rel="+">
+                    <a href="#" class="key c49">
+                        <span>+</span>
+                    </a>
+                </li>
+                <li rel="๑">
+                    <a href="#" class="key c50">
+                        <span>๑</span>
+                    </a>
+                </li>
+                <li rel="๒">
+                    <a href="#" class="key c51">
+                        <span>๒</span>
+                    </a>
+                </li>
+                <li rel="๓">
+                    <a href="#" class="key c52">
+                        <span>๓</span>
+                    </a>
+                </li>
+                <li rel="๔">
+                    <a href="#" class="key c53">
+                        <span>๔</span>
+                    </a>
+                </li>
+                <li rel="ู">
+                    <a href="#" class="key c54">
+                        <span>ู</span>
+                    </a>
+                </li>
+                <li rel="฿">
+                    <a href="#" class="key c55">
+                        <span>฿</span>
+                    </a>
+                </li>
+                <li rel="๕">
+                    <a href="#" class="key c56">
+                        <span>๕</span>
+                    </a>
+                </li>
+                <li rel="๖">
+                    <a href="#" class="key c57">
+                        <span>๖</span>
+                    </a>
+                </li>
+                <li rel="๗">
+                    <a href="#" class="key c48">
+                        <span>๗</span>
+                    </a>
+                </li>
+                <li rel="๘">
+                    <a href="#" class="key c189 ">
+                        <span>๘</span>
+                    </a>
+                </li>
+                <li rel="๙">
+                    <a href="#" class="key c187">
+                        <span>๙</span>
+                    </a>
+                </li>
+                <li rel="delete">
+                    <a href="#" class="key c46" id="delete">
+                        <span>Delete</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="cf" id="qwerty">
+                <li rel="tab">
+                    <a href="#" class="key c9" id="tab">
+                        <span>tab</span>
+                    </a>
+                </li>
+                <li rel="1">
+                    <a href="๐" class="key c81">
+                        <span>๐</span>
+                    </a>
+                </li>
+                <li rel="">
+                    <a href="#" class="key c87">
+                        <span>"</span>
+                    </a>
+                </li>
+                <li rel="ฎ">
+                    <a href="#" class="key c69">
+                        <span>ฎ</span>
+                    </a>
+                </li>
+                <li rel="ฑ">
+                    <a href="#" class="key c82">
+                        <span>ฑ</span>
+                    </a>
+                </li>
+                <li rel="ธ">
+                    <a href="#" class="key c84">
+                        <span>ธ</span>
+                    </a>
+                </li>
+                <li rel="ํ">
+                    <a href="#" class="key c89">
+                        <span>ํ</span>
+                    </a>
+                </li>
+                <li rel="๊">
+                    <a href="#" class="key c85">
+                        <span>๊</span>
+                    </a>
+                </li>
+                <li rel="ณ">
+                    <a href="#" class="key c73">
+                        <span>ณ</span>
+                    </a>
+                </li>
+                <li rel="ฯ">
+                    <a href="#" class="key c79">
+                        <span>ฯ</span>
+                    </a>
+                </li>
+                <li rel="ญ">
+                    <a href="#" class="key c80">
+                        <span>ญ</span>
+                    </a>
+                </li>
+                <li rel="ฐ">
+                    <a href="#" class="key c219 ">
+                        <span>ฐ</span>
+                    </a>
+                </li>
+                <li rel=",">
+                    <a href="#" class="key c221 ">
+                        <span>,</span>
+                    </a>
+                </li>
+                <li rel="ฅ">
+                    <a href="#" class="key c220 ">
+                        <span>ฅ</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="cf" id="asdfg">
+                <li rel="capcap">
+                    <a href="#" class="keycap c20 alt" id="caps">
+                        <b></b>
+                        <span>caps </span>
+                    </a>
+                </li>
+                <li rel="ฤ">
+                    <a href="#" class="key c65">
+                        <span>ฤ</span>
+                    </a>
+                </li>
+                <li rel="ฆ">
+                    <a href="#" class="key c83">
+                        <span>ฆ</span>
+                    </a>
+                </li>
+                <li rel="ฏ">
+                    <a href="#" class="key c68">
+                        <span>ฏ</span>
+                    </a>
+                </li>
+                <li rel="โ">
+                    <a href="#" class="key c70">
+                        <span>โ</span>
+                    </a>
+                </li>
+                <li rel="ฌ">
+                    <a href="#" class="key c71">
+                        <span>ฌ</span>
+                    </a>
+                </li>
+                <li rel="็">
+                    <a href="#" class="key c72">
+                        <span>็</span>
+                    </a>
+                </li>
+                <li rel="๋">
+                    <a href="#" class="key c74">
+                        <span>๋</span>
+                    </a>
+                </li>
+                <li rel="ษ">
+                    <a href="#" class="key c75">
+                        <span>ษ</span>
+                    </a>
+                </li>
+                <li rel="ศ">
+                    <a href="#" class="key c76">
+                        <span>ศ</span>
+                    </a>
+                </li>
+                <li rel="ซ">
+                    <a href="#" class="key c186 ">
+                        <span>ซ</span>
+                    </a>
+                </li>
+                <li rel=".">
+                    <a href="#" class="key c222 ">
+                        <span>.</span>
+                    </a>
+                </li>
+                <li rel="enter">
+                    <a href="#" class="key c13 alt" id="enter">
+                        <span>Enter</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="cf" id="zxcvb">
+                <li rel="shiftcap">
+                    <a href="#" class="key shiftleft">
+                        <span>Shift</span>
+                    </a>
+                </li>
+                <li rel="(">
+                    <a href="#" class="key c90">
+                        <span>(</span>
+                    </a>
+                </li>
+                <li rel=")">
+                    <a href="#" class="key c88">
+                        <span>)</span>
+                    </a>
+                </li>
+                <li rel="ฉ">
+                    <a href="#" class="key c67">
+                        <span>ฉ</span>
+                    </a>
+                </li>
+                <li rel="ฮ">
+                    <a href="#" class="key c86">
+                        <span>ฮ</span>
+                    </a>
+                </li>
+                <li rel="ฺ">
+                    <a href="#" class="key c66">
+                        <span>ฺ</span>
+                    </a>
+                </li>
+                <li rel="์">
+                    <a href="#" class="key c78">
+                        <span>์</span>
+                    </a>
+                </li>
+                <li rel="?">
+                    <a href="#" class="key c77">
+                        <span>?</span>
+                    </a>
+                </li>
+                <li rel="ฒ">
+                    <a href="#" class="key c188 ">
+                        <span>ฒ</span>
+                    </a>
+                </li>
+                <li rel="ฬ">
+                    <a href="#" class="key c190 ">
+                        <span>ฬ</span>
+                    </a>
+                </li>
+                <li rel="ฦ">
+                    <a href="#" class="key c191 ">
+                        <span>ฦ</span>
+                    </a>
+                </li>
+                <li rel="shiftcap">
+                    <a href="#" class="key c16 shiftright">
+                        <span>Shift</span>
+                    </a>
+                </li>
+            </ul>
+    
+        </div>
+        <div id="myProgressAdd" style="display: none;	">
+            <div id="myBarAdd">0%</div>
+        </div>
+    
+       </div>
+       
+     </div>
+   </div>
+ </div>
+
+  <!-- Modal edit -->
+  <div class="modal fade" id="myModalEdit" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+         <div class="modal-header">
+             <h3 class="modal-title">แก้ไขข้อมูล</h3>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeEdit" >
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+        <div class="modal-body">
+         <div id="exampleWrapperAdd">
+             <form id="myForm" method="POST" action="?process-form">
+     
+                 <div class="input-group">
+                     <textarea class="form-control custom-control" cols="70" rows="2" style="resize:none" id="textareaReadEdit"></textarea>
+                     <span class="input-group-addon btn btn-primary" id="btnEdit"  >
+                         <span class="glyphicon glyphicon-edit"></span>
+                     </span>
+     
+                 </div>
+             </form>
+         </div>
+     
+         <div id="keyboard">
+             <ul class="cf" id="numnertop">
+     
+                 <li rel="1" rel="1">
+                     <a href="#" class="key c49">
+                         <span>1</span>
+                     </a>
+                 </li>
+                 <li rel="2">
+                     <a href="#" class="key c50">
+                         <span>2</span>
+                     </a>
+                 </li>
+                 <li rel="3">
+                     <a href="#" class="key c51">
+                         <span>3</span>
+                     </a>
+                 </li>
+                 <li rel="4">
+                     <a href="#" class="key c52">
+                         <span>4</span>
+                     </a>
+                 </li>
+                 <li rel="5">
+                     <a href="#" class="key c53">
+                         <span>5</span>
+                     </a>
+                 </li>
+                 <li rel="6">
+                     <a href="#" class="key c54">
+                         <span>6</span>
+                     </a>
+                 </li>
+                 <li rel="7">
+                     <a href="#" class="key c55">
+                         <span>7</span>
+                     </a>
+                 </li>
+                 <li rel="8">
+                     <a href="#" class="key c56">
+                         <span>8</span>
+                     </a>
+                 </li>
+                 <li rel="9">
+                     <a href="#" class="key c57">
+                         <span>9</span>
+                     </a>
+                 </li>
+                 <li rel="0">
+                     <a href="#" class="key c48">
+                         <span>0</span>
+                     </a>
+                 </li>
+                 <li rel="+">
+                     <a href="#" class="key c189 ">
+                         <span>+</span>
+                     </a>
+                 </li>
+                 <li rel="-">
+                     <a href="#" class="key c187">
+                         <span>-</span>
+                     </a>
+                 </li>
+                 <li rel="*">
+                     <a href="#" class="key c192">
+                         <span>*</span>
+                     </a>
+                 </li>
+                 <li rel="clear">
+                     <a href="#" class="key c46" id="delete">
+                         <span>CLR</span>
+                     </a>
+                 </li>
+             </ul>
+             <ul class="cf" id="numbers">
+                 <li rel="_">
+                     <a href="#" class="key c192">
+                         <span>_</span>
+                     </a>
+                 </li>
+                 <li rel="ๅ">
+                     <a href="#" class="key c49">
+                         <span>ๅ</span>
+                     </a>
+                 </li>
+                 <li rel="/">
+                     <a href="#" class="key c50">
+                         <span>/</span>
+                     </a>
+                 </li>
+                 <li rel="-">
+                     <a href="#" class="key c51">
+                         <span>-</span>
+                     </a>
+                 </li>
+                 <li rel="ภ">
+                     <a href="#" class="key c52">
+                         <span>ภ</span>
+                     </a>
+                 </li>
+                 <li rel="ถ">
+                     <a href="#" class="key c53">
+                         <span>ถ</span>
+                     </a>
+                 </li>
+                 <li rel="ุ">
+                     <a href="#" class="key c54">
+                         <span>ุ</span>
+                     </a>
+                 </li>
+                 <li rel="ึ">
+                     <a href="#" class="key c55">
+                         <span>ึ</span>
+                     </a>
+                 </li>
+                 <li rel="ค">
+                     <a href="#" class="key c56">
+                         <span>ค</span>
+                     </a>
+                 </li>
+                 <li rel="ต">
+                     <a href="#" class="key c57">
+                         <span>ต</span>
+                     </a>
+                 </li>
+                 <li rel="จ">
+                     <a href="#" class="key c48">
+                         <span>จ</span>
+                     </a>
+                 </li>
+                 <li rel="ข">
+                     <a href="#" class="key c189 ">
+                         <span>ข</span>
+                     </a>
+                 </li>
+                 <li rel="ช">
+                     <a href="#" class="key c187">
+                         <span>ช</span>
+                     </a>
+                 </li>
+                 <li rel="delete">
+                     <a href="#" class="key c46" id="delete">
+                         <span>Delete</span>
+                     </a>
+                 </li>
+             </ul>
+             <ul class="cf" id="qwerty">
+                 <li rel="tab">
+                     <a href="#" class="key c9" id="tab">
+                         <span>tab</span>
+                     </a>
+                 </li>
+                 <li rel="ๆ">
+                     <a href="#" class="key c81">
+                         <span>ๆ</span>
+                     </a>
+                 </li>
+                 <li rel="ไ">
+                     <a href="#" class="key c87">
+                         <span>ไ</span>
+                     </a>
+                 </li>
+                 <li rel="ำ">
+                     <a href="#" class="key c69">
+                         <span>ำ</span>
+                     </a>
+                 </li>
+                 <li rel="พ">
+                     <a href="#" class="key c82">
+                         <span>พ</span>
+                     </a>
+                 </li>
+                 <li rel="ะ">
+                     <a href="#" class="key c84">
+                         <span>ะ</span>
+                     </a>
+                 </li>
+                 <li rel="ั">
+                     <a href="#" class="key c89">
+                         <span>ั</span>
+                     </a>
+                 </li>
+                 <li rel="ี">
+                     <a href="#" class="key c85">
+                         <span>ี</span>
+                     </a>
+                 </li>
+                 <li rel="ร">
+                     <a href="#" class="key c73">
+                         <span>ร</span>
+                     </a>
+                 </li>
+                 <li rel="น">
+                     <a href="#" class="key c79">
+                         <span>น</span>
+                     </a>
+                 </li>
+                 <li rel="ย">
+                     <a href="#" class="key c80">
+                         <span>ย</span>
+                     </a>
+                 </li>
+                 <li rel="บ">
+                     <a href="#" class="key c219 ">
+                         <span>บ</span>
+                     </a>
+                 </li>
+                 <li rel="ล">
+                     <a href="#" class="key c221 ">
+                         <span>ล</span>
+                     </a>
+                 </li>
+                 <li rel="ฃ">
+                     <a href="#" class="key c220 ">
+                         <span>ฃ</span>
+                     </a>
+                 </li>
+             </ul>
+             <ul class="cf" id="asdfg">
+                 <li rel="cap">
+                     <a href="#" class="key c20 alt" id="caps">
+                         <b></b>
+                         <span>caps </span>
+                     </a>
+                 </li>
+                 <li rel="ฟ">
+                     <a href="#" class="key c65">
+                         <span>ฟ</span>
+                     </a>
+                 </li>
+                 <li rel="ห">
+                     <a href="#" class="key c83">
+                         <span>ห</span>
+                     </a>
+                 </li>
+                 <li rel="ก">
+                     <a href="#" class="key c68">
+                         <span>ก</span>
+                     </a>
+                 </li>
+                 <li rel="ด">
+                     <a href="#" class="key c70">
+                         <span>ด</span>
+                     </a>
+                 </li>
+                 <li rel="เ">
+                     <a href="#" class="key c71">
+                         <span>เ</span>
+                     </a>
+                 </li>
+                 <li rel="้">
+                     <a href="#" class="key c72">
+                         <span>้</span>
+                     </a>
+                 </li>
+                 <li rel="่">
+                     <a href="#" class="key c74">
+                         <span>่</span>
+                     </a>
+                 </li>
+                 <li rel="า">
+                     <a href="#" class="key c75">
+                         <span>า</span>
+                     </a>
+                 </li>
+                 <li rel="ส">
+                     <a href="#" class="key c76">
+                         <span>ส</span>
+                     </a>
+                 </li>
+                 <li rel="ว">
+                     <a href="#" class="key c186 ">
+                         <span>ว</span>
+                     </a>
+                 </li>
+                 <li rel="ง">
+                     <a href="#" class="key c222 ">
+                         <span>ง</span>
+                     </a>
+                 </li>
+                 <li rel="enter">
+                     <a href="#" class="key c13 alt" id="enter">
+                         <span>Enter</span>
+                     </a>
+                 </li>
+             </ul>
+             <ul class="cf" id="zxcvb">
+                 <li rel="shift">
+                     <a href="#" class="key c16 shiftleft">
+                         <span>Shift</span>
+                     </a>
+                 </li>
+                 <li rel="ผ">
+                     <a href="#" class="key c90">
+                         <span>ผ</span>
+                     </a>
+                 </li>
+                 <li rel="ป">
+                     <a href="#" class="key c88">
+                         <span>ป</span>
+                     </a>
+                 </li>
+                 <li rel="แ">
+                     <a href="#" class="key c67">
+                         <span>แ</span>
+                     </a>
+                 </li>
+                 <li rel="อ">
+                     <a href="#" class="key c86">
+                         <span>อ</span>
+                     </a>
+                 </li>
+                 <li rel="ิ">
+                     <a href="#" class="key c66">
+                         <span>ิ</span>
+                     </a>
+                 </li>
+                 <li rel="ื">
+                     <a href="#" class="key c78">
+                         <span>ื</span>
+                     </a>
+                 </li>
+                 <li rel="ท">
+                     <a href="#" class="key c77">
+                         <span>ท</span>
+                     </a>
+                 </li>
+                 <li rel="ม">
+                     <a href="#" class="key c188 ">
+                         <span>ม</span>
+                     </a>
+                 </li>
+                 <li rel="ใ">
+                     <a href="#" class="key c190 ">
+                         <span>ใ</span>
+                     </a>
+                 </li>
+                 <li rel="ฝ">
+                     <a href="#" class="key c191 ">
+                         <span>ฝ</span>
+                     </a>
+                 </li>
+                 <li rel="shift">
+                     <a href="#" class="key c16 shiftright">
+                         <span>Shift</span>
+                     </a>
+                 </li>
+             </ul>
+     
+         </div>
+     
+         <div id="keyboardShift" style="display: none;	">
+             <ul class="cf" id="numnertop">
+     
+                 <li rel="1">
+                     <a href="#" class="key c49">
+                         <span>1</span>
+                     </a>
+                 </li>
+                 <li rel="2">
+                     <a href="#" class="key c50">
+                         <span>2</span>
+                     </a>
+                 </li>
+                 <li rel="3">
+                     <a href="#" class="key c51">
+                         <span>3</span>
+                     </a>
+                 </li>
+                 <li rel="4">
+                     <a href="#" class="key c52">
+                         <span>4</span>
+                     </a>
+                 </li>
+                 <li rel="5">
+                     <a href="#" class="key c53">
+                         <span>5</span>
+                     </a>
+                 </li>
+                 <li rel="6">
+                     <a href="#" class="key c54">
+                         <span>6</span>
+                     </a>
+                 </li>
+                 <li rel="7">
+                     <a href="#" class="key c55">
+                         <span>7</span>
+                     </a>
+                 </li>
+                 <li rel="8">
+                     <a href="#" class="key c56">
+                         <span>8</span>
+                     </a>
+                 </li>
+                 <li rel="9">
+                     <a href="#" class="key c57">
+                         <span>9</span>
+                     </a>
+                 </li>
+                 <li rel="0">
+                     <a href="#" class="key c48">
+                         <span>0</span>
+                     </a>
+                 </li>
+                 <li rel="=">
+                     <a href="#" class="key c189 ">
+                         <span>=</span>
+                     </a>
+                 </li>
+                 <li rel="(">
+                     <a href="#" class="key c187">
+                         <span>(</span>
+                     </a>
+                 </li>
+                 <li rel=")">
+                     <a href="#" class="key c192">
+                         <span>)</span>
+                     </a>
+                 </li>
+                 <li rel="clear">
+                     <a href="#" class="key c46" id="delete">
+                         <span>CLR</span>
+                     </a>
+                 </li>
+             </ul>
+             <ul class="cf" id="numbers">
+                 <li rel="%">
+                     <a href="#" class="key c192">
+                         <span>%</span>
+                     </a>
+                 </li>
+                 <li rel="+">
+                     <a href="#" class="key c49">
+                         <span>+</span>
+                     </a>
+                 </li>
+                 <li rel="๑">
+                     <a href="#" class="key c50">
+                         <span>๑</span>
+                     </a>
+                 </li>
+                 <li rel="๒">
+                     <a href="#" class="key c51">
+                         <span>๒</span>
+                     </a>
+                 </li>
+                 <li rel="๓">
+                     <a href="#" class="key c52">
+                         <span>๓</span>
+                     </a>
+                 </li>
+                 <li rel="๔">
+                     <a href="#" class="key c53">
+                         <span>๔</span>
+                     </a>
+                 </li>
+                 <li rel="ู">
+                     <a href="#" class="key c54">
+                         <span>ู</span>
+                     </a>
+                 </li>
+                 <li rel="฿">
+                     <a href="#" class="key c55">
+                         <span>฿</span>
+                     </a>
+                 </li>
+                 <li rel="๕">
+                     <a href="#" class="key c56">
+                         <span>๕</span>
+                     </a>
+                 </li>
+                 <li rel="๖">
+                     <a href="#" class="key c57">
+                         <span>๖</span>
+                     </a>
+                 </li>
+                 <li rel="๗">
+                     <a href="#" class="key c48">
+                         <span>๗</span>
+                     </a>
+                 </li>
+                 <li rel="๘">
+                     <a href="#" class="key c189 ">
+                         <span>๘</span>
+                     </a>
+                 </li>
+                 <li rel="๙">
+                     <a href="#" class="key c187">
+                         <span>๙</span>
+                     </a>
+                 </li>
+                 <li rel="delete">
+                     <a href="#" class="key c46" id="delete">
+                         <span>Delete</span>
+                     </a>
+                 </li>
+             </ul>
+             <ul class="cf" id="qwerty">
+                 <li rel="tab">
+                     <a href="#" class="key c9" id="tab">
+                         <span>tab</span>
+                     </a>
+                 </li>
+                 <li rel="1">
+                     <a href="๐" class="key c81">
+                         <span>๐</span>
+                     </a>
+                 </li>
+                 <li rel="">
+                     <a href="#" class="key c87">
+                         <span>"</span>
+                     </a>
+                 </li>
+                 <li rel="ฎ">
+                     <a href="#" class="key c69">
+                         <span>ฎ</span>
+                     </a>
+                 </li>
+                 <li rel="ฑ">
+                     <a href="#" class="key c82">
+                         <span>ฑ</span>
+                     </a>
+                 </li>
+                 <li rel="ธ">
+                     <a href="#" class="key c84">
+                         <span>ธ</span>
+                     </a>
+                 </li>
+                 <li rel="ํ">
+                     <a href="#" class="key c89">
+                         <span>ํ</span>
+                     </a>
+                 </li>
+                 <li rel="๊">
+                     <a href="#" class="key c85">
+                         <span>๊</span>
+                     </a>
+                 </li>
+                 <li rel="ณ">
+                     <a href="#" class="key c73">
+                         <span>ณ</span>
+                     </a>
+                 </li>
+                 <li rel="ฯ">
+                     <a href="#" class="key c79">
+                         <span>ฯ</span>
+                     </a>
+                 </li>
+                 <li rel="ญ">
+                     <a href="#" class="key c80">
+                         <span>ญ</span>
+                     </a>
+                 </li>
+                 <li rel="ฐ">
+                     <a href="#" class="key c219 ">
+                         <span>ฐ</span>
+                     </a>
+                 </li>
+                 <li rel=",">
+                     <a href="#" class="key c221 ">
+                         <span>,</span>
+                     </a>
+                 </li>
+                 <li rel="ฅ">
+                     <a href="#" class="key c220 ">
+                         <span>ฅ</span>
+                     </a>
+                 </li>
+             </ul>
+             <ul class="cf" id="asdfg">
+                 <li rel="capshift">
+                     <a href="#" class="key c20 alt" id="caps">
+                         <b></b>
+                         <span>caps </span>
+                     </a>
+                 </li>
+                 <li rel="ฤ">
+                     <a href="#" class="key c65">
+                         <span>ฤ</span>
+                     </a>
+                 </li>
+                 <li rel="ฆ">
+                     <a href="#" class="key c83">
+                         <span>ฆ</span>
+                     </a>
+                 </li>
+                 <li rel="ฏ">
+                     <a href="#" class="key c68">
+                         <span>ฏ</span>
+                     </a>
+                 </li>
+                 <li rel="โ">
+                     <a href="#" class="key c70">
+                         <span>โ</span>
+                     </a>
+                 </li>
+                 <li rel="ฌ">
+                     <a href="#" class="key c71">
+                         <span>ฌ</span>
+                     </a>
+                 </li>
+                 <li rel="็">
+                     <a href="#" class="key c72">
+                         <span>็</span>
+                     </a>
+                 </li>
+                 <li rel="๋">
+                     <a href="#" class="key c74">
+                         <span>๋</span>
+                     </a>
+                 </li>
+                 <li rel="ษ">
+                     <a href="#" class="key c75">
+                         <span>ษ</span>
+                     </a>
+                 </li>
+                 <li rel="ศ">
+                     <a href="#" class="key c76">
+                         <span>ศ</span>
+                     </a>
+                 </li>
+                 <li rel="ซ">
+                     <a href="#" class="key c186 ">
+                         <span>ซ</span>
+                     </a>
+                 </li>
+                 <li rel=".">
+                     <a href="#" class="key c222 ">
+                         <span>.</span>
+                     </a>
+                 </li>
+                 <li rel="enter">
+                     <a href="#" class="key c13 alt" id="enter">
+                         <span>Enter</span>
+                     </a>
+                 </li>
+             </ul>
+             <ul class="cf" id="zxcvb">
+                 <li rel="shiftshift">
+                     <a href="#" class="keyshift  shiftleft">
+                         <span>Shift</span>
+                     </a>
+                 </li>
+                 <li rel="(">
+                     <a href="#" class="key c90">
+                         <span>(</span>
+                     </a>
+                 </li>
+                 <li rel=")">
+                     <a href="#" class="key c88">
+                         <span>)</span>
+                     </a>
+                 </li>
+                 <li rel="ฉ">
+                     <a href="#" class="key c67">
+                         <span>ฉ</span>
+                     </a>
+                 </li>
+                 <li rel="ฮ">
+                     <a href="#" class="key c86">
+                         <span>ฮ</span>
+                     </a>
+                 </li>
+                 <li rel="ฺ">
+                     <a href="#" class="key c66">
+                         <span>ฺ</span>
+                     </a>
+                 </li>
+                 <li rel="์">
+                     <a href="#" class="key c78">
+                         <span>์</span>
+                     </a>
+                 </li>
+                 <li rel="?">
+                     <a href="#" class="key c77">
+                         <span>?</span>
+                     </a>
+                 </li>
+                 <li rel="ฒ">
+                     <a href="#" class="key c188 ">
+                         <span>ฒ</span>
+                     </a>
+                 </li>
+                 <li rel="ฬ">
+                     <a href="#" class="key c190 ">
+                         <span>ฬ</span>
+                     </a>
+                 </li>
+                 <li rel="ฦ">
+                     <a href="#" class="key c191 ">
+                         <span>ฦ</span>
+                     </a>
+                 </li>
+                 <li rel="shiftshift">
+                     <a href="#" class="keyshift c16 shiftright">
+                         <span>Shift</span>
+                     </a>
+                 </li>
+             </ul>
+     
+         </div>
+         <div id="keyboardCap" style="display: none;	">
+             <ul class="cf" id="numnertop">
+     
+                 <li rel="1">
+                     <a href="#" class="key c49">
+                         <span>1</span>
+                     </a>
+                 </li>
+                 <li rel="2">
+                     <a href="#" class="key c50">
+                         <span>2</span>
+                     </a>
+                 </li>
+                 <li rel="3">
+                     <a href="#" class="key c51">
+                         <span>3</span>
+                     </a>
+                 </li>
+                 <li rel="4">
+                     <a href="#" class="key c52">
+                         <span>4</span>
+                     </a>
+                 </li>
+                 <li rel="5">
+                     <a href="#" class="key c53">
+                         <span>5</span>
+                     </a>
+                 </li>
+                 <li rel="6">
+                     <a href="#" class="key c54">
+                         <span>6</span>
+                     </a>
+                 </li>
+                 <li rel="7">
+                     <a href="#" class="key c55">
+                         <span>7</span>
+                     </a>
+                 </li>
+                 <li rel="8">
+                     <a href="#" class="key c56">
+                         <span>8</span>
+                     </a>
+                 </li>
+                 <li rel="9">
+                     <a href="#" class="key c57">
+                         <span>9</span>
+                     </a>
+                 </li>
+                 <li rel="0">
+                     <a href="#" class="key c48">
+                         <span>0</span>
+                     </a>
+                 </li>
+                 <li rel="=">
+                     <a href="#" class="key c189 ">
+                         <span>=</span>
+                     </a>
+                 </li>
+                 <li rel="(">
+                     <a href="#" class="key c187">
+                         <span>(</span>
+                     </a>
+                 </li>
+                 <li rel=")">
+                     <a href="#" class="key c192">
+                         <span>)</span>
+                     </a>
+                 </li>
+                 <li rel="clear">
+                     <a href="#" class="key c46" id="delete">
+                         <span>CLR</span>
+                     </a>
+                 </li>
+             </ul>
+             <ul class="cf" id="numbers">
+                 <li rel="%">
+                     <a href="#" class="key c192">
+                         <span>%</span>
+                     </a>
+                 </li>
+                 <li rel="+">
+                     <a href="#" class="key c49">
+                         <span>+</span>
+                     </a>
+                 </li>
+                 <li rel="๑">
+                     <a href="#" class="key c50">
+                         <span>๑</span>
+                     </a>
+                 </li>
+                 <li rel="๒">
+                     <a href="#" class="key c51">
+                         <span>๒</span>
+                     </a>
+                 </li>
+                 <li rel="๓">
+                     <a href="#" class="key c52">
+                         <span>๓</span>
+                     </a>
+                 </li>
+                 <li rel="๔">
+                     <a href="#" class="key c53">
+                         <span>๔</span>
+                     </a>
+                 </li>
+                 <li rel="ู">
+                     <a href="#" class="key c54">
+                         <span>ู</span>
+                     </a>
+                 </li>
+                 <li rel="฿">
+                     <a href="#" class="key c55">
+                         <span>฿</span>
+                     </a>
+                 </li>
+                 <li rel="๕">
+                     <a href="#" class="key c56">
+                         <span>๕</span>
+                     </a>
+                 </li>
+                 <li rel="๖">
+                     <a href="#" class="key c57">
+                         <span>๖</span>
+                     </a>
+                 </li>
+                 <li rel="๗">
+                     <a href="#" class="key c48">
+                         <span>๗</span>
+                     </a>
+                 </li>
+                 <li rel="๘">
+                     <a href="#" class="key c189 ">
+                         <span>๘</span>
+                     </a>
+                 </li>
+                 <li rel="๙">
+                     <a href="#" class="key c187">
+                         <span>๙</span>
+                     </a>
+                 </li>
+                 <li rel="delete">
+                     <a href="#" class="key c46" id="delete">
+                         <span>Delete</span>
+                     </a>
+                 </li>
+             </ul>
+             <ul class="cf" id="qwerty">
+                 <li rel="tab">
+                     <a href="#" class="key c9" id="tab">
+                         <span>tab</span>
+                     </a>
+                 </li>
+                 <li rel="1">
+                     <a href="๐" class="key c81">
+                         <span>๐</span>
+                     </a>
+                 </li>
+                 <li rel="">
+                     <a href="#" class="key c87">
+                         <span>"</span>
+                     </a>
+                 </li>
+                 <li rel="ฎ">
+                     <a href="#" class="key c69">
+                         <span>ฎ</span>
+                     </a>
+                 </li>
+                 <li rel="ฑ">
+                     <a href="#" class="key c82">
+                         <span>ฑ</span>
+                     </a>
+                 </li>
+                 <li rel="ธ">
+                     <a href="#" class="key c84">
+                         <span>ธ</span>
+                     </a>
+                 </li>
+                 <li rel="ํ">
+                     <a href="#" class="key c89">
+                         <span>ํ</span>
+                     </a>
+                 </li>
+                 <li rel="๊">
+                     <a href="#" class="key c85">
+                         <span>๊</span>
+                     </a>
+                 </li>
+                 <li rel="ณ">
+                     <a href="#" class="key c73">
+                         <span>ณ</span>
+                     </a>
+                 </li>
+                 <li rel="ฯ">
+                     <a href="#" class="key c79">
+                         <span>ฯ</span>
+                     </a>
+                 </li>
+                 <li rel="ญ">
+                     <a href="#" class="key c80">
+                         <span>ญ</span>
+                     </a>
+                 </li>
+                 <li rel="ฐ">
+                     <a href="#" class="key c219 ">
+                         <span>ฐ</span>
+                     </a>
+                 </li>
+                 <li rel=",">
+                     <a href="#" class="key c221 ">
+                         <span>,</span>
+                     </a>
+                 </li>
+                 <li rel="ฅ">
+                     <a href="#" class="key c220 ">
+                         <span>ฅ</span>
+                     </a>
+                 </li>
+             </ul>
+             <ul class="cf" id="asdfg">
+                 <li rel="capcap">
+                     <a href="#" class="keycap c20 alt" id="caps">
+                         <b></b>
+                         <span>caps </span>
+                     </a>
+                 </li>
+                 <li rel="ฤ">
+                     <a href="#" class="key c65">
+                         <span>ฤ</span>
+                     </a>
+                 </li>
+                 <li rel="ฆ">
+                     <a href="#" class="key c83">
+                         <span>ฆ</span>
+                     </a>
+                 </li>
+                 <li rel="ฏ">
+                     <a href="#" class="key c68">
+                         <span>ฏ</span>
+                     </a>
+                 </li>
+                 <li rel="โ">
+                     <a href="#" class="key c70">
+                         <span>โ</span>
+                     </a>
+                 </li>
+                 <li rel="ฌ">
+                     <a href="#" class="key c71">
+                         <span>ฌ</span>
+                     </a>
+                 </li>
+                 <li rel="็">
+                     <a href="#" class="key c72">
+                         <span>็</span>
+                     </a>
+                 </li>
+                 <li rel="๋">
+                     <a href="#" class="key c74">
+                         <span>๋</span>
+                     </a>
+                 </li>
+                 <li rel="ษ">
+                     <a href="#" class="key c75">
+                         <span>ษ</span>
+                     </a>
+                 </li>
+                 <li rel="ศ">
+                     <a href="#" class="key c76">
+                         <span>ศ</span>
+                     </a>
+                 </li>
+                 <li rel="ซ">
+                     <a href="#" class="key c186 ">
+                         <span>ซ</span>
+                     </a>
+                 </li>
+                 <li rel=".">
+                     <a href="#" class="key c222 ">
+                         <span>.</span>
+                     </a>
+                 </li>
+                 <li rel="enter">
+                     <a href="#" class="key c13 alt" id="enter">
+                         <span>Enter</span>
+                     </a>
+                 </li>
+             </ul>
+             <ul class="cf" id="zxcvb">
+                 <li rel="shiftcap">
+                     <a href="#" class="key shiftleft">
+                         <span>Shift</span>
+                     </a>
+                 </li>
+                 <li rel="(">
+                     <a href="#" class="key c90">
+                         <span>(</span>
+                     </a>
+                 </li>
+                 <li rel=")">
+                     <a href="#" class="key c88">
+                         <span>)</span>
+                     </a>
+                 </li>
+                 <li rel="ฉ">
+                     <a href="#" class="key c67">
+                         <span>ฉ</span>
+                     </a>
+                 </li>
+                 <li rel="ฮ">
+                     <a href="#" class="key c86">
+                         <span>ฮ</span>
+                     </a>
+                 </li>
+                 <li rel="ฺ">
+                     <a href="#" class="key c66">
+                         <span>ฺ</span>
+                     </a>
+                 </li>
+                 <li rel="์">
+                     <a href="#" class="key c78">
+                         <span>์</span>
+                     </a>
+                 </li>
+                 <li rel="?">
+                     <a href="#" class="key c77">
+                         <span>?</span>
+                     </a>
+                 </li>
+                 <li rel="ฒ">
+                     <a href="#" class="key c188 ">
+                         <span>ฒ</span>
+                     </a>
+                 </li>
+                 <li rel="ฬ">
+                     <a href="#" class="key c190 ">
+                         <span>ฬ</span>
+                     </a>
+                 </li>
+                 <li rel="ฦ">
+                     <a href="#" class="key c191 ">
+                         <span>ฦ</span>
+                     </a>
+                 </li>
+                 <li rel="shiftcap">
+                     <a href="#" class="key c16 shiftright">
+                         <span>Shift</span>
+                     </a>
+                 </li>
+             </ul>
+     
+         </div>
+         <div id="myProgressEdit" style="display: none;	">
+             <div id="myBarEdit">0%</div>
+         </div>
+     
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Del -->
+<div id="myModalDel" class="modal fade modal2">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+                
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>				
+				
+                <button type="button" id="close-del" class="close"  data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <h4 class="modal-title">คุณต้องกาลบข้อมูลนี้ ?</h4>	
+			<div class="modal-body">
+				<div id="valuedel" style="display: none;	">
+				
+                </div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="cancle"  class="btn btn-info mr-center"  data-dismiss="modal">ยกเลิก</button>
+				<button type="button" id="btn-del" class="btn btn-danger">ลบ</button>
+            </div>
+            <div id="myProgressDel" style="display: none;	">
+                    <div id="myBarDel">0%</div>
+                </div>
+        
+		</div>
+	</div>
+</div>    
+<div class="back-to-top">
+    <i class="	fa fa-toggle-down fa-3x" id="downPage" >  </i>
+    <i class="	fa fa-toggle-up fa-3x" id="upPage" >   </i>
+    
+   
+    <div>
+        <div id="myProgressCenter" style="display: none;	">
+            <div id="myBarCenter">0%</div>
+        </div>
+
+
+</body>
+</html>
